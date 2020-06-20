@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的</title>
+    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+</head>
+<body>
+<div id="head" class="">
+    <div id="kuang" style="text-align: left;">
+        <img class="t-image" src="file:///D:/Python/bookstore_flask/static/photo/管理员.jpg" style="text-align: left;">
+        <div>
+            <p style="font-family: 幼圆,sans-serif;font-size: 24px;text-align: left"> 用户昵称</p>
+            <p style="font-family: 幼圆,sans-serif;font-size: 12px;text-align: left"> ID: 110002</p>
+        </div>
+    </div>
+</div>
+<div id="mid" class="">
+    <div class="">
+        <img class="b-image" src="{{ url_for('static',filename='images/白板.png') }}">
+    </div>
+    <div class="tubiao">
+        <div><a href="我的功能/已完成.html">
+            <img class="m-image" src="{{ url_for('static',filename='images/已完成.png') }}" style="position:absolute;left:10%;top:18%;z-index:2;">
+        </a></div>
+        <div><a href="我的功能/已借阅.html">
+            <img class="m-image" src="{{ url_for('static',filename='images/已借阅.png') }}" style="position:absolute;left:33%;top:18%;z-index:2;">
+        </a></div>
+        <div><a href="我的功能/已取消.html">
+            <img class="m-image" src="{{ url_for('static',filename='images/已取消.png') }}" style="position:absolute;left:56%;top:18%;z-index:2;">
+        </a></div>
+        <div><a href="我的功能/已购买.html">
+            <img class="m-image" src="{{ url_for('static',filename='images/已购买.png') }}" style="position:absolute;left:10%;top:36%;z-index:2;">
+        </a></div>
+        <div><a href="我的功能/待收货.html">
+            <img class="m-image" src="{{ url_for('static',filename='images/待收货.png') }}" style="position:absolute;left:33%;top:36%;z-index:2;">
+        </a></div>
+        <div><a href="我的功能/已预订.html">
+            <img class="m-image" src="{{ url_for('static',filename='images/已预订.png') }}" style="position:absolute;left:56%;top:36%;z-index:2;">
+        </a></div>
+    </div>
+    <form action="我的功能/其他管理.html">
+        <div style="position: absolute;left: 13%;top: 220px;text-align: center">
+            <button class="qt-btn" type="submit">其他管理</button>
+        </div>
+    </form>
+    <form action="我的功能/成员管理.html">
+        <div style="position: absolute;left: 13%;top: 260px;text-align: center">
+            <button class="qt-btn" type="submit">成员管理</button>
+        </div>
+    </form>
+</div>
+<div id="footer" class="bottom">
+    <div>
+        <a href="http://localhost:5000/home">
+            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/operator">
+            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/shopping">
+            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/my">
+            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
+        </a>
+    </div>
+</div>
+</body>
+</html>

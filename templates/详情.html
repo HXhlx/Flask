@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情</title>
+    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+</head>
+<body>
+<div id="header" class="">
+    <div id="kuang" style="text-align: left">
+        <div>
+            <a href="http://localhost:5000/operator">
+                <img class="s-image" src="{{ url_for('static',filename='images/返回.png') }}" style="text-align: left">
+            </a>
+        </div>
+    </div>
+    <label>
+        <input class="s-inp" type="text" placeholder=" 搜索">
+    </label>
+    <div id="kuang">
+        <div>
+            <a href="http://localhost:5000/my">
+                <img class="s-image" src="{{ url_for('static',filename='images/点点点.png') }}" style="text-align: right">
+            </a>
+        </div>
+        <div>
+            <a href="http://localhost:5000/shopping">
+                <img class="s-image" src="{{ url_for('static',filename='images/小购物车.png') }}" style="text-align: right">
+            </a>
+        </div>
+        <div>
+            <a href="分享.html">
+                <img class="s-image" src="{{ url_for('static',filename='images/分享.png') }}" style="text-align: right">
+            </a>
+        </div>
+    </div>
+</div>
+<div id="main" class="">
+    <img class="xq-image" src="{{ url_for('static',filename='images/详情.png') }}">
+</div>
+<div id="hfoot" class="">
+    <div id="kuang" style="text-align: left">
+        <img class="s-image" src="{{ url_for('static',filename='images/客服.png') }}" style="text-align: left">
+        <img class="s-image" src="{{ url_for('static',filename='images/收藏.png') }}" style="text-align: left">
+    </div>
+    <div style="text-align: right">
+        <table style="width: 120px;border: 0">
+            <tr>
+                <td>
+                    <form action='http://localhost:5000/sell'>
+                        <button class="jia-btn" type="submit">加入购物车</button>
+                    </form>
+                </td>
+                <td>
+                    <form action='http://localhost:5000/sell'>
+                        <button class="gou-btn" type="submit">立即购买</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='ss.css') }}">
+</head>
+<body>
+<div id="header">
+    <div id="kuang" style="text-align: left;">
+        <img class="s-image" src="{{ url_for('static',filename='images/snow.png') }}" style="text-align: left;">
+        <p class="tou">XXXX书店</p>
+        <label>
+            <input class="sou-inp" type="text" placeholder=" 搜索">
+        </label>
+    </div>
+</div>
+<div id="main">
+    <div>
+        <a href="http://localhost:5000/detail">
+            <img class="b-image" src="{{ url_for('static',filename='images/推荐1.png') }}" style="position:absolute;top:9%;">
+        </a>
+    </div>
+    <div>
+        <img class="b-image" src="{{ url_for('static',filename='images/推荐2.png') }}" style="position:absolute;top:30.5%;">
+    </div>
+    <div>
+        <img class="b-image" src="{{ url_for('static',filename='images/白.png') }}" style="position:absolute;bottom:15%;">
+    </div>
+    <div class="tubiao">
+        <div>
+            <a href="图书分类/儿童读物.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/儿童读物.png') }}" style="position:absolute;left:0;bottom:31%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/文学.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/文学.png') }}" style="position:absolute;left:22%;bottom:31%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/青少年读物.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/青少年读物.png') }}" style="position:absolute;left:44%;bottom:31%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/考试图书.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/考试图书.png') }}" style="position:absolute;left:65%;bottom:31%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/人文历史.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/人文历史.png') }}" style="position:absolute;left:0;bottom:15%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/科学.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/科学.png') }}" style="position:absolute;left:22%;bottom:15%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/金融经济.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/金融经济.png') }}" style="position:absolute;left:44%;bottom:15%;z-index:2;">
+            </a>
+        </div>
+        <div>
+            <a href="图书分类/中小学教辅.html">
+                <img class="m-image" src="{{ url_for('static',filename='images/中小学教辅.png') }}" style="position:absolute;left:65%;bottom:15%;z-index:2;">
+            </a>
+        </div>
+    </div>
+</div>
+<div id="footer" class="bottom">
+    <div>
+        <a href="http://localhost:5000/home">
+            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/operator">
+            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/shopping">
+            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/my">
+            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
+        </a>
+    </div>
+</div>
+</body>
+</html>

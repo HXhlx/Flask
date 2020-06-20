@@ -1,0 +1,364 @@
+body {
+    background-color: rgb(55, 133, 135);
+    font-family: 幼圆, sans-serif;
+    color: white;
+}
+
+.box {
+    border-style: solid;
+    border-color: gray;
+    border-width: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.white-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 60px 5px 20px 5px;
+}
+
+.w-box {
+    background-color: white;
+    margin-bottom: 70%;
+
+}
+
+/* .btn:hover{
+    color: white;
+    background: rgb(55, 133, 135);
+}
+.btn:focus{
+    color: rgb(240, 253, 194);
+    background: rgb(55, 133, 135);
+    outline: none;
+} */
+
+input {
+    position: absolute;
+    width: 85%;
+    height: 30px;
+    border: 0 solid gray;
+    color: rgb(165, 165, 165);
+    outline-style: none;
+
+}
+
+input:focus {
+    border-color: #a0d2fa;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+.yan-inp {
+    /* position: absolute; */
+    width: 200px;
+    height: 30px;
+    border: 0 solid gray;
+    color: rgb(165, 165, 165);
+    /* outline-style: none ; */
+}
+
+.sou-inp {
+    width: 45%;
+    height: 20px;
+    font-size: 12px;
+    font-family: 幼圆, sans-serif;
+    margin: -30px 5px 120px 40%;
+    border-radius: 6px;
+    border: 0 solid gray;
+    color: rgb(165, 165, 165);
+    float: right;
+    vertical-align: middle;
+}
+
+.s-inp {
+    width: 45%;
+    height: 20px;
+    font-size: 12px;
+    font-family: 幼圆, sans-serif;
+    margin: 2% 50% 10px 2%;
+    border-radius: 6px;
+    border: 0 solid gray;
+    color: rgb(165, 165, 165);
+    float: left;
+    vertical-align: middle;
+}
+
+.sl-inp {
+    width: 45%;
+    height: 20px;
+    font-size: 12px;
+    font-family: 幼圆, sans-serif;
+    margin: -10px 50% 10px 2%;
+    border-radius: 6px;
+    border: 0 solid gray;
+    color: rgb(165, 165, 165);
+    float: left;
+    vertical-align: middle;
+}
+
+button {
+    width: 260px;
+    height: 50px;
+    border: 0;
+    border-radius: 12px;
+    margin: 60% 20px 20% 20px;
+    background: white;
+    font-size: 18px;
+    font-family: 幼圆, sans-serif;
+    color: rgb(55, 133, 135);
+}
+
+.yan-btn {
+    width: 120px;
+    height: 28px;
+    /* border: 1px solid gray; */
+    margin: -18px 5px;
+    background: white;
+    font-size: 15px;
+    font-family: 幼圆, sans-serif;
+    color: rgb(55, 133, 135);
+}
+
+.deng-btn {
+    font-family: 华文行楷, sans-serif;
+    font-size: 24px;
+    margin-top: 60%;
+}
+
+.qita-btn {
+    width: 260px;
+    height: 30px;
+    border-radius: 8px;
+    font-family: 华文行楷, sans-serif;
+    font-size: 16px;
+}
+
+.jia-btn {
+    width: 90px;
+    height: 48px;
+    border: 1px solid white;
+    margin-left: 40%;
+    margin-top: -2px;
+    background: rgb(155, 194, 195);
+    font-size: 15px;
+    font-family: 幼圆, sans-serif;
+    color: white;
+    /* display:inline-block; */
+    float: left;
+}
+
+.gou-btn {
+    width: 90px;
+    height: 48px;
+    border: 1px solid white;
+    margin-right: 0;
+    margin-top: -2px;
+    background: rgb(55, 133, 135);
+    font-size: 15px;
+    font-family: 幼圆, sans-serif;
+    color: white;
+    /* display:inline-block; */
+    float: right;
+}
+
+h1 {
+    font-family: 华文琥珀, sans-serif;
+    color: white;
+    margin-top: 30%;
+    text-align: center;
+}
+
+h2 {
+    font-family: 华文楷体, sans-serif;
+    color: white;
+    /* margin-top: 60%; */
+    text-align: left;
+}
+
+h3 {
+    font-family: 华文楷体, sans-serif;
+    color: white;
+    /* margin-top: 60%; */
+    text-align: left;
+}
+
+.tou {
+    font-family: 华文琥珀, sans-serif;
+    height: 100%;
+    width: 30%;
+    margin-top: 5%;
+    /* border: 1px solid white; */
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+.guanli {
+    font-family: 幼圆, sans-serif;
+    height: 20px;
+    font-size: 16px;
+    margin: -40px 2% 120px 80%;
+    color: white;
+    text-align: center;
+}
+
+.tiaoguo {
+    font-family: 幼圆, sans-serif;
+    font-size: 16px;
+    color: white;
+    text-align: right;
+}
+
+.shul {
+    font-family: 幼圆, sans-serif;
+    font-size: 16px;
+    /* margin-top: -20px; */
+    color: white;
+    text-align: left;
+}
+
+.image {
+    width: 45px;
+    margin: 0 auto;
+}
+
+.t-image {
+    width: 20%;
+    border-radius: 50%;
+}
+
+.s-image {
+    width: 40px;
+    margin: 0 auto;
+    /* border: 1px solid white; */
+    vertical-align: middle;
+}
+
+.l-image {
+    width: 90%;
+    margin-left: 5%;
+    vertical-align: middle;
+}
+
+.m-image {
+    width: 30px;
+    height: 40px;
+    margin-left: 2%;
+    position: absolute;
+    z-index: 2;
+    vertical-align: middle;
+    float: left;
+}
+
+.b-image {
+    width: 375px;
+    position: absolute;
+    z-index: 1;
+    border-bottom: 2px solid white;
+}
+
+.gm-image {
+    width: 94%;
+    /* position: absolute; */
+    border-bottom: 1px solid white;
+}
+
+.xq-image {
+    width: 100%;
+    /* position: absolute; */
+    border-bottom: 0 solid white;
+}
+
+#header {
+    width: 100%;
+    height: 40px;
+    border-bottom: 3px solid white;
+}
+
+#main {
+    width: 100%;
+    height: 490px;
+}
+
+#left {
+    width: 14%;
+    height: 100%;
+    float: left;
+    border-right: 2px solid white;
+}
+
+#right {
+    width: 85%;
+    height: 100%;
+    float: left;
+}
+
+#footer {
+    clear: both;
+    width: 100%;
+    height: 80px;
+    border-top: 3px solid white;
+}
+
+#kuang {
+    vertical-align: middle;
+    /* text-align: left; */
+    border: 0 solid rgb(55, 133, 135);
+}
+
+#head {
+    vertical-align: bottom;
+    width: 100%;
+    height: 85px;
+    border-bottom: 0 solid white;
+
+}
+
+#mid {
+    width: 100%;
+    height: 453px;
+    background: rgb(155, 194, 195);
+}
+
+#foot {
+    clear: both;
+    width: 100%;
+    height: 80px;
+}
+
+#hfoot {
+    clear: both;
+    width: 100%;
+    height: 50px;
+    background: white;
+}
+
+.bottom {
+    height: 100%;
+}
+
+.bottom img {
+    display: block;
+    width: 15%;
+    height: 100%;
+    margin-left: 8%;
+    float: left;
+}
+
+.tubiao {
+    height: 100%;
+}
+
+.tubiao img {
+    display: block;
+    width: 15%;
+    height: 15%;
+    margin-left: 10%;
+    margin-top: 2%;
+    float: left;
+    position: absolute;
+}

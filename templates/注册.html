@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+</head>
+<body>
+<form action='http://localhost:5000/skip'>
+    <div class="white-box">
+        <input type="file" name="face"><br><br><br>
+        <label>
+            <input type="text" required placeholder="请输入身份证号" name="id">
+        </label><br><br><br>
+        <label>
+            <input type="text" required placeholder="请输入姓名" name="name">
+        </label><br><br><br>
+        <label>
+            <input type="text" required placeholder="请输入住址" name="address">
+        </label><br><br><br>
+    </div>
+    <button class="deng-btn" type="submit">注册</button>
+</form>
+</body>
+</html>

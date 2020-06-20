@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购买</title>
+    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+</head>
+<body>
+<div id="header" class="">
+    <!-- <div id="kuang" align="left">
+        <img class="s-image" src="file:///E:/Study/软件工程/实验四/返回.png" align=left>
+    </div>
+    <input class="s-inp" type="text" placeholder=" 搜索">
+    <div id="kuang">
+        <img class="s-image" src="file:///E:/Study/软件工程/实验四/点点点.png" align=right>
+        <img class="s-image" src="file:///E:/Study/软件工程/实验四/小购物车.png" align=right>
+        <img class="s-image" src="file:///E:/Study/软件工程/实验四/分享.png" align=right>
+    </div> -->
+</div>
+<form action='http://localhost:5000/shopping'>
+    <div id="main" background="">
+        <div id="kuang" style="text-align: left">
+            <img class="gm-image" src="{{ url_for('static',filename='images/显示.png') }}" style="text-align: left">
+        </div>
+        <h2>人间失格</h2>
+        <h3>¥ 29.8</h3>
+        <table>
+            <tr>
+                <td style="width: 60px;height: 10px">
+                    <p class="shil">数量</p>
+                </td>
+                <td style="width: 200px;height: 20px">
+                    <label>
+                        <input class="sl-inp" type="text" required placeholder="请输入购买数量" name="num">
+                    </label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="hfoot" class="">
+        <div id="kuang" style="text-align: right">
+            <table style="width: 120px;border: 0">
+                <tr>
+                    <td>
+                        <form action='http://localhost:5000/detail'>
+                            <button class="jia-btn" type="submit">取消</button>
+                        </form>
+                    </td>
+                    <td>
+                        <button class="gou-btn" type="submit">确定</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</form>
+</body>
+</html>

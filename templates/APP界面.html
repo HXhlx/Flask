@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XXXX书店</title>
+    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+</head>
+<body>
+    <a href="http://localhost:5000/home">
+        <p class="tiaoguo">跳过</p>
+    </a>
+    <h1>XXXX书店</h1>
+    <form action='http://localhost:5000/login'>
+        <div style="text-align: center;">
+            <button class="deng-btn" type="submit">登录/注册</button>
+        </div>
+        <div style="text-align: center;">
+            <a href="https://graph.qq.com/oauth2.0/show?which=Login&display=pc&response_type=code&client_id=101477621&redirect_uri=https%3A%2F%2Fsso.e.qq.com%2Fpassport%3Fservice_tag%3D14%26sso_redirect_uri%3Dhttps%253A%252F%252Fadnet.qq.com%252F&scope=get_user_info">
+                <img class="image" src="{{url_for('static',filename='images/QQ.png')}}">
+            </a>
+            <a href="https://wx.qq.com/">
+                <img class="image" src="{{url_for('static',filename='images/WeChat.png')}}">
+            </a>
+        </div>
+    </form>
+</body>
+</html>

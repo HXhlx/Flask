@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+</head>
+<body>
+<div id="header" class="">
+    <div id="kuang" style="text-align: left;">
+        <img class="s-image" src="{{ url_for('static',filename='images/snow.png') }}" style="text-align: left;">
+        <p class="tou">XXXX书店</p>
+        <div style="text-align: left;">
+            <a href="">
+                <p class="guanli">管理</p>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="main" class="">
+    {% if num>0 %}
+        <div>
+            <img class="b-image" src="{{ url_for('static',filename='images/推荐1.png') }}" style="position:absolute;top:9%;">
+        </div>
+    {% endif %}
+</div>
+<div id="footer" class="bottom">
+    <div>
+        <a href="http://localhost:5000/home">
+            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/operator">
+            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/shopping">
+            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
+        </a>
+    </div>
+    <div>
+        <a href="http://localhost:5000/my">
+            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
+        </a>
+    </div>
+</div>
+</body>
+</html>
