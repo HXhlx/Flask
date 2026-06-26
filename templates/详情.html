@@ -9,7 +9,7 @@
 <div id="header" class="">
     <div id="kuang" style="text-align: left">
         <div>
-            <a href="http://localhost:5000/operator">
+            <a href="{{ url_for('operator') }}">
                 <img class="s-image" src="{{ url_for('static',filename='images/返回.png') }}" style="text-align: left">
             </a>
         </div>
@@ -19,17 +19,17 @@
     </label>
     <div id="kuang">
         <div>
-            <a href="http://localhost:5000/my">
+            <a href="{{ url_for('my') }}">
                 <img class="s-image" src="{{ url_for('static',filename='images/点点点.png') }}" style="text-align: right">
             </a>
         </div>
         <div>
-            <a href="http://localhost:5000/shopping">
+            <a href="{{ url_for('shopping') }}">
                 <img class="s-image" src="{{ url_for('static',filename='images/小购物车.png') }}" style="text-align: right">
             </a>
         </div>
         <div>
-            <a href="分享.html">
+            <a href="{{ url_for('share') }}">
                 <img class="s-image" src="{{ url_for('static',filename='images/分享.png') }}" style="text-align: right">
             </a>
         </div>
@@ -47,12 +47,12 @@
         <table style="width: 120px;border: 0">
             <tr>
                 <td>
-                    <form action='http://localhost:5000/sell'>
+                    <form action="{{ url_for('sell') }}">
                         <button class="jia-btn" type="submit">加入购物车</button>
                     </form>
                 </td>
                 <td>
-                    <form action='http://localhost:5000/sell'>
+                    <form action="{{ url_for('sell') }}">
                         <button class="gou-btn" type="submit">立即购买</button>
                     </form>
                 </td>

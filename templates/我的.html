@@ -8,7 +8,7 @@
 <body>
 <div id="head" class="">
     <div id="kuang" style="text-align: left;">
-        <img class="t-image" src="file:///D:/Python/bookstore_flask/static/photo/管理员.jpg" style="text-align: left;">
+        <img class="t-image" src="{{ url_for('static', filename='photo/管理员.jpg') }}" style="text-align: left;">
         <div>
             <p style="font-family: 幼圆,sans-serif;font-size: 24px;text-align: left"> 用户昵称</p>
             <p style="font-family: 幼圆,sans-serif;font-size: 12px;text-align: left"> ID: 110002</p>
@@ -20,31 +20,31 @@
         <img class="b-image" src="{{ url_for('static',filename='images/白板.png') }}">
     </div>
     <div class="tubiao">
-        <div><a href="我的功能/已完成.html">
+        <div><a href="{{ url_for('my_feature', feature='已完成') }}">
             <img class="m-image" src="{{ url_for('static',filename='images/已完成.png') }}" style="position:absolute;left:10%;top:18%;z-index:2;">
         </a></div>
-        <div><a href="我的功能/已借阅.html">
+        <div><a href="{{ url_for('my_feature', feature='已借阅') }}">
             <img class="m-image" src="{{ url_for('static',filename='images/已借阅.png') }}" style="position:absolute;left:33%;top:18%;z-index:2;">
         </a></div>
-        <div><a href="我的功能/已取消.html">
+        <div><a href="{{ url_for('my_feature', feature='已取消') }}">
             <img class="m-image" src="{{ url_for('static',filename='images/已取消.png') }}" style="position:absolute;left:56%;top:18%;z-index:2;">
         </a></div>
-        <div><a href="我的功能/已购买.html">
+        <div><a href="{{ url_for('my_feature', feature='已购买') }}">
             <img class="m-image" src="{{ url_for('static',filename='images/已购买.png') }}" style="position:absolute;left:10%;top:36%;z-index:2;">
         </a></div>
-        <div><a href="我的功能/待收货.html">
+        <div><a href="{{ url_for('my_feature', feature='待收货') }}">
             <img class="m-image" src="{{ url_for('static',filename='images/待收货.png') }}" style="position:absolute;left:33%;top:36%;z-index:2;">
         </a></div>
-        <div><a href="我的功能/已预订.html">
+        <div><a href="{{ url_for('my_feature', feature='已预订') }}">
             <img class="m-image" src="{{ url_for('static',filename='images/已预订.png') }}" style="position:absolute;left:56%;top:36%;z-index:2;">
         </a></div>
     </div>
-    <form action="我的功能/其他管理.html">
+    <form action="{{ url_for('my_feature', feature='其他管理') }}">
         <div style="position: absolute;left: 13%;top: 220px;text-align: center">
             <button class="qt-btn" type="submit">其他管理</button>
         </div>
     </form>
-    <form action="我的功能/成员管理.html">
+    <form action="{{ url_for('my_feature', feature='成员管理') }}">
         <div style="position: absolute;left: 13%;top: 260px;text-align: center">
             <button class="qt-btn" type="submit">成员管理</button>
         </div>
@@ -52,22 +52,22 @@
 </div>
 <div id="footer" class="bottom">
     <div>
-        <a href="http://localhost:5000/home">
+        <a href="{{ url_for('home') }}">
             <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/operator">
+        <a href="{{ url_for('operator') }}">
             <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/shopping">
+        <a href="{{ url_for('shopping') }}">
             <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/my">
+        <a href="{{ url_for('my') }}">
             <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
         </a>
     </div>

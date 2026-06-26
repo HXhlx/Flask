@@ -2,26 +2,27 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>购物车</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
+    <title>推荐</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='ss.css') }}">
 </head>
 <body>
-<div id="header" class="">
+<div id="header">
     <div id="kuang" style="text-align: left;">
         <img class="s-image" src="{{ url_for('static',filename='images/snow.png') }}" style="text-align: left;">
         <p class="tou">XXXX书店</p>
-        <div style="text-align: left;">
-            <a href="">
-                <p class="guanli">管理</p>
-            </a>
-        </div>
     </div>
 </div>
-<div id="main" class="">
-    {% if num>0 %}
-        <div>
-            <img class="b-image" src="{{ url_for('static',filename='images/推荐1.png') }}" style="position:absolute;top:9%;">
+<div id="main">
+    <h2>为您推荐</h2>
+    {% if books %}
+        {% for book in books %}
+        <div style="padding:10px;border-bottom:1px solid #eee;">
+            <p><strong>{{ book[1] }}</strong> - {{ book[2] }}</p>
+            <p>{{ book[3] }} | ¥{{ book[4] }} | 库存: {{ book[5] }}</p>
         </div>
+        {% endfor %}
+    {% else %}
+        <p>暂无推荐</p>
     {% endif %}
 </div>
 <div id="footer" class="bottom">

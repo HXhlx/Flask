@@ -17,7 +17,7 @@
 </div>
 <div id="main">
     <div>
-        <a href="http://localhost:5000/detail">
+        <a href="{{ url_for('detail') }}">
             <img class="b-image" src="{{ url_for('static',filename='images/推荐1.png') }}" style="position:absolute;top:9%;">
         </a>
     </div>
@@ -29,42 +29,42 @@
     </div>
     <div class="tubiao">
         <div>
-            <a href="图书分类/儿童读物.html">
+            <a href="{{ url_for('book_category', category='儿童读物') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/儿童读物.png') }}" style="position:absolute;left:0;bottom:31%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/文学.html">
+            <a href="{{ url_for('book_category', category='文学') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/文学.png') }}" style="position:absolute;left:22%;bottom:31%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/青少年读物.html">
+            <a href="{{ url_for('book_category', category='青少年读物') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/青少年读物.png') }}" style="position:absolute;left:44%;bottom:31%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/考试图书.html">
+            <a href="{{ url_for('book_category', category='考试图书') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/考试图书.png') }}" style="position:absolute;left:65%;bottom:31%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/人文历史.html">
+            <a href="{{ url_for('book_category', category='人文历史') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/人文历史.png') }}" style="position:absolute;left:0;bottom:15%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/科学.html">
+            <a href="{{ url_for('book_category', category='科学') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/科学.png') }}" style="position:absolute;left:22%;bottom:15%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/金融经济.html">
+            <a href="{{ url_for('book_category', category='金融经济') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/金融经济.png') }}" style="position:absolute;left:44%;bottom:15%;z-index:2;">
             </a>
         </div>
         <div>
-            <a href="图书分类/中小学教辅.html">
+            <a href="{{ url_for('book_category', category='中小学教辅') }}">
                 <img class="m-image" src="{{ url_for('static',filename='images/中小学教辅.png') }}" style="position:absolute;left:65%;bottom:15%;z-index:2;">
             </a>
         </div>
@@ -72,22 +72,22 @@
 </div>
 <div id="footer" class="bottom">
     <div>
-        <a href="http://localhost:5000/home">
+        <a href="{{ url_for('home') }}">
             <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/operator">
+        <a href="{{ url_for('operator') }}">
             <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/shopping">
+        <a href="{{ url_for('shopping') }}">
             <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/my">
+        <a href="{{ url_for('my') }}">
             <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
         </a>
     </div>

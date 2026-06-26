@@ -18,34 +18,31 @@
 <div id="main" class="">
     <div id="left" class="">
         <div class="w-box">
-            <!-- <div><a href="操作.html"> -->
             <img class="l-image" src="{{ url_for('static',filename='images/购书.png') }}">
-            <!-- </a></div> -->
-            <!-- <div><a href="预订.html"> -->
-            <img class="l-image" src="{{ url_for('static',filename='images/预订.png') }}"></div>
-        <!-- </a></div> -->
+            <img class="l-image" src="{{ url_for('static',filename='images/预订.png') }}">
+        </div>
     </div>
     <div id="right" class="">
     </div>
 </div>
 <div id="footer" class="bottom">
     <div>
-        <a href="http://localhost:5000/home">
+        <a href="{{ url_for('home') }}">
             <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/operator">
+        <a href="{{ url_for('operator') }}">
             <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/shopping">
+        <a href="{{ url_for('shopping') }}">
             <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
         </a>
     </div>
     <div>
-        <a href="http://localhost:5000/my">
+        <a href="{{ url_for('my') }}">
             <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
         </a>
     </div>

@@ -6,11 +6,11 @@
     <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
 </head>
 <body>
-    <a href="http://localhost:5000/home">
+    <a href="{{ url_for('home') }}">
         <p class="tiaoguo">跳过</p>
     </a>
     <h1>XXXX书店</h1>
-    <form action='http://localhost:5000/login'>
+    <form action="{{ url_for('login') }}">
         <div style="text-align: center;">
             <button class="deng-btn" type="submit">登录/注册</button>
         </div>

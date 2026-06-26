@@ -7,17 +7,8 @@
 </head>
 <body>
 <div id="header" class="">
-    <!-- <div id="kuang" align="left">
-        <img class="s-image" src="file:///E:/Study/软件工程/实验四/返回.png" align=left>
-    </div>
-    <input class="s-inp" type="text" placeholder=" 搜索">
-    <div id="kuang">
-        <img class="s-image" src="file:///E:/Study/软件工程/实验四/点点点.png" align=right>
-        <img class="s-image" src="file:///E:/Study/软件工程/实验四/小购物车.png" align=right>
-        <img class="s-image" src="file:///E:/Study/软件工程/实验四/分享.png" align=right>
-    </div> -->
 </div>
-<form action='http://localhost:5000/shopping'>
+<form action="{{ url_for('shopping') }}">
     <div id="main" background="">
         <div id="kuang" style="text-align: left">
             <img class="gm-image" src="{{ url_for('static',filename='images/显示.png') }}" style="text-align: left">
@@ -42,9 +33,9 @@
             <table style="width: 120px;border: 0">
                 <tr>
                     <td>
-                        <form action='http://localhost:5000/detail'>
-                            <button class="jia-btn" type="submit">取消</button>
-                        </form>
+                        <a href="{{ url_for('detail') }}">
+                            <button class="jia-btn" type="button">取消</button>
+                        </a>
                     </td>
                     <td>
                         <button class="gou-btn" type="submit">确定</button>
