@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XXXX书店</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
-</head>
-<body>
-    <a href="{{ url_for('home') }}">
-        <p class="tiaoguo">跳过</p>
-    </a>
-    <h1>XXXX书店</h1>
-    <form action="{{ url_for('login') }}">
-        <div style="text-align: center;">
-            <button class="deng-btn" type="submit">登录/注册</button>
+{% extends "base.html" %}
+{% block title %}APP启动{% endblock %}
+{% block body %}
+<div class="layout-wrap" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;">
+    <div class="main-content" style="text-align:center;padding:40px 20px;">
+        <img src="{{ url_for('static', filename='images/snow.png') }}" alt="logo" style="width:80px;margin-bottom:20px;">
+        <h1>XXXX书店</h1>
+        <p class="text-muted" style="margin-bottom:40px;">书香满屋，悦享人生</p>
+        <a href="{{ url_for('login_page') }}" style="display:inline-block;">
+            <button class="deng-btn" type="button">登录 / 注册</button>
+        </a>
+        <div style="margin-top:16px;">
+            <a href="{{ url_for('home') }}" class="back-link" style="margin-top:8px;">跳过，直接进入首页</a>
         </div>
-        <div style="text-align: center;">
-            <a href="https://graph.qq.com/oauth2.0/show?which=Login&display=pc&response_type=code&client_id=101477621&redirect_uri=https%3A%2F%2Fsso.e.qq.com%2Fpassport%3Fservice_tag%3D14%26sso_redirect_uri%3Dhttps%253A%252F%252Fadnet.qq.com%252F&scope=get_user_info">
-                <img class="image" src="{{url_for('static',filename='images/QQ.png')}}">
-            </a>
-            <a href="https://wx.qq.com/">
-                <img class="image" src="{{url_for('static',filename='images/WeChat.png')}}">
-            </a>
-        </div>
-    </form>
-</body>
-</html>
+    </div>
+</div>
+{% endblock %}

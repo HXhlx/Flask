@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}管理员登录{% endblock %}
+{% block body %}
+<div class="layout-wrap">
+    <div class="main-content" style="display:flex;align-items:center;justify-content:center;min-height:80vh;">
+        <div class="page-container">
+            <h2 class="page-title">管理员登录</h2>
+            {% if error %}
+            <div class="alert alert-error">{{ error }}</div>
+            {% endif %}
+            <form method="POST" action="{{ url_for('admin_login') }}">
+                <div class="form-group">
+                    <label for="id_number">身份证号</label>
+                    <input type="text" id="id_number" name="id_number" required
+                           placeholder="请输入管理员身份证号" maxlength="18">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" required placeholder="请输入密码">
+                </div>
+                <button type="submit" class="btn-primary">登录</button>
+            </form>
+            <a href="{{ url_for('home') }}" class="back-link">返回首页</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

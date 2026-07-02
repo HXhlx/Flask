@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}已取消{% endblock %}
+{% block body %}
+<div id="header">
+    <a href="{{ url_for('my') }}">
+        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
+    </a>
+    <p class="tou" style="margin-left:12px;">已取消</p>
+</div>
+<div class="layout-wrap">
+    <div class="main-content">
+        <p class="empty-msg">已取消的订单将在此显示</p>
+    </div>
+</div>
+<nav class="bottom-nav"><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/图书1.png') }}"><span>首页</span></a><a href="{{ url_for('operator') }}"><img src="{{ url_for('static', filename='images/操作.png') }}"><span>操作</span></a><a href="{{ url_for('shopping') }}"><img src="{{ url_for('static', filename='images/购物车.png') }}"><span>购物车</span></a><a href="{{ url_for('my') }}"><img src="{{ url_for('static', filename='images/我的.png') }}"><span>我的</span></a></nav>
+{% endblock %}

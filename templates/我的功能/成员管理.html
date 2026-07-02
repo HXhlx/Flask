@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}成员管理{% endblock %}
+{% block body %}
+<div id="header">
+    <a href="{{ url_for('my') }}">
+        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
+    </a>
+    <p class="tou" style="margin-left:12px;">成员管理</p>
+</div>
+<div class="layout-wrap">
+    <div class="main-content">
+        {% if member %}
+        <div class="member-info" style="max-width:500px;">
+            <div class="form-group"><label>会员号</label><p style="font-size:16px;">{{ member.member_id }}</p></div>
+            <div class="form-group"><label>姓名</label><p style="font-size:16px;">{{ member.name }}</p></div>
+            <div class="form-group"><label>手机号</label><p style="font-size:16px;">{{ member.phone }}</p></div>
+            <div class="form-group"><label>住址</label><p style="font-size:16px;">{{ member.address }}</p></div>
+            <div class="form-group"><label>积分</label><p style="font-size:16px;">{{ member.score }}</p></div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<nav class="bottom-nav"><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/图书1.png') }}"><span>首页</span></a><a href="{{ url_for('operator') }}"><img src="{{ url_for('static', filename='images/操作.png') }}"><span>操作</span></a><a href="{{ url_for('shopping') }}"><img src="{{ url_for('static', filename='images/购物车.png') }}"><span>购物车</span></a><a href="{{ url_for('my') }}"><img src="{{ url_for('static', filename='images/我的.png') }}"><span>我的</span></a></nav>
+{% endblock %}

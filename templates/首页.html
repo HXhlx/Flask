@@ -1,96 +1,78 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='ss.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}首页{% endblock %}
+{% block body %}
 <div id="header">
-    <div id="kuang" style="text-align: left;">
-        <img class="s-image" src="{{ url_for('static',filename='images/snow.png') }}" style="text-align: left;">
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
         <p class="tou">XXXX书店</p>
-        <label>
-            <input class="sou-inp" type="text" placeholder=" 搜索">
-        </label>
+    </div>
+    <form class="search-form" action="{{ url_for('search') }}" method="GET">
+        <input class="sou-inp" type="text" name="q" placeholder="搜索书名、作者、出版社...">
+    </form>
+    <div class="header-actions">
+        {% if member %}
+            <a href="{{ url_for('my') }}">{{ member.name }}</a>
+            <form method="POST" action="{{ url_for('logout') }}" style="display:inline">
+                <button class="btn-outline" type="submit" style="padding:4px 12px;font-size:12px;">退出</button>
+            </form>
+        {% else %}
+            <a href="{{ url_for('login_page') }}">登录</a>
+        {% endif %}
     </div>
 </div>
-<div id="main">
-    <div>
-        <a href="{{ url_for('detail') }}">
-            <img class="b-image" src="{{ url_for('static',filename='images/推荐1.png') }}" style="position:absolute;top:9%;">
-        </a>
-    </div>
-    <div>
-        <img class="b-image" src="{{ url_for('static',filename='images/推荐2.png') }}" style="position:absolute;top:30.5%;">
-    </div>
-    <div>
-        <img class="b-image" src="{{ url_for('static',filename='images/白.png') }}" style="position:absolute;bottom:15%;">
-    </div>
-    <div class="tubiao">
-        <div>
-            <a href="{{ url_for('book_category', category='儿童读物') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/儿童读物.png') }}" style="position:absolute;left:0;bottom:31%;z-index:2;">
+
+<div class="layout-wrap">
+    <div class="main-content">
+        <div class="banner-section">
+            <a href="{{ url_for('detail') }}" class="banner-main">
+                <img src="{{ url_for('static', filename='images/推荐1.png') }}" alt="新书推荐">
+            </a>
+            <div class="banner-main">
+                <img src="{{ url_for('static', filename='images/推荐2.png') }}" alt="热门推荐">
+            </div>
+        </div>
+
+        <h2>图书分类</h2>
+        <div class="category-grid">
+            {% for category in categories %}
+            <a href="{{ url_for('book_category', category=category) }}" class="category-card">
+                <img src="{{ url_for('static', filename='images/' + category + '.png') }}" alt="{{ category }}">
+                <span>{{ category }}</span>
+            </a>
+            {% endfor %}
+        </div>
+
+        {% if member %}
+        <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+            <a href="{{ url_for('recommend') }}" class="manage-link" style="flex:1;min-width:200px;">
+                <span>为你推荐</span>
+                <small>根据您的阅读偏好推荐</small>
+            </a>
+            <a href="{{ url_for('my_feature', feature='已购买') }}" class="manage-link" style="flex:1;min-width:200px;">
+                <span>我的订单</span>
+                <small>查看购买历史和状态</small>
             </a>
         </div>
-        <div>
-            <a href="{{ url_for('book_category', category='文学') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/文学.png') }}" style="position:absolute;left:22%;bottom:31%;z-index:2;">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('book_category', category='青少年读物') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/青少年读物.png') }}" style="position:absolute;left:44%;bottom:31%;z-index:2;">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('book_category', category='考试图书') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/考试图书.png') }}" style="position:absolute;left:65%;bottom:31%;z-index:2;">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('book_category', category='人文历史') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/人文历史.png') }}" style="position:absolute;left:0;bottom:15%;z-index:2;">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('book_category', category='科学') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/科学.png') }}" style="position:absolute;left:22%;bottom:15%;z-index:2;">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('book_category', category='金融经济') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/金融经济.png') }}" style="position:absolute;left:44%;bottom:15%;z-index:2;">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('book_category', category='中小学教辅') }}">
-                <img class="m-image" src="{{ url_for('static',filename='images/中小学教辅.png') }}" style="position:absolute;left:65%;bottom:15%;z-index:2;">
-            </a>
-        </div>
+        {% endif %}
     </div>
 </div>
-<div id="footer" class="bottom">
-    <div>
-        <a href="{{ url_for('home') }}">
-            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('operator') }}">
-            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('shopping') }}">
-            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('my') }}">
-            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
-        </a>
-    </div>
-</div>
-</body>
-</html>
+
+<nav class="bottom-nav" id="footer">
+    <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/图书1.png') }}" alt="首页">
+        <span>首页</span>
+    </a>
+    <a href="{{ url_for('operator') }}">
+        <img src="{{ url_for('static', filename='images/操作.png') }}" alt="操作">
+        <span>操作</span>
+    </a>
+    <a href="{{ url_for('shopping') }}">
+        <img src="{{ url_for('static', filename='images/购物车.png') }}" alt="购物车">
+        <span>购物车</span>
+    </a>
+    <a href="{{ url_for('my') }}">
+        <img src="{{ url_for('static', filename='images/我的.png') }}" alt="我的">
+        <span>我的</span>
+    </a>
+</nav>
+{% endblock %}

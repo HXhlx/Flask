@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}管理员面板{% endblock %}
+{% block body %}
+<div id="header">
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
+        <p class="tou">管理员面板</p>
+    </div>
+    <div class="header-actions">
+        <span style="opacity:0.7;">{{ session.get('admin_name', '管理员') }}</span>
+    </div>
+</div>
+
+<div class="layout-wrap">
+    <div class="main-content">
+        {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+
+        <div class="stats-summary">
+            <div class="stat-num">
+                <strong>{{ stats.member_count }}</strong>
+                <span>会员总数</span>
+            </div>
+            <div class="stat-num">
+                <strong>{{ stats.book_count }}</strong>
+                <span>图书种类</span>
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:24px;">
+            <div class="stats-card">
+                <h3>月度销售额</h3>
+                <table class="stats-table">
+                    <tr><th>月份</th><th>销售额</th></tr>
+                    {% for month, amount in stats.sales %}
+                    <tr><td>{{ month }}</td><td>&yen;{{ amount }}</td></tr>
+                    {% endfor %}
+                    {% if not stats.sales %}
+                    <tr><td colspan="2" style="opacity:0.5;">暂无数据</td></tr>
+                    {% endif %}
+                </table>
+            </div>
+
+            <div class="stats-card">
+                <h3>月度租赁收入</h3>
+                <table class="stats-table">
+                    <tr><th>月份</th><th>租赁额</th></tr>
+                    {% for month, amount in stats.rentals %}
+                    <tr><td>{{ month }}</td><td>&yen;{{ amount }}</td></tr>
+                    {% endfor %}
+                    {% if not stats.rentals %}
+                    <tr><td colspan="2" style="opacity:0.5;">暂无数据</td></tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+
+        <div class="stats-card" style="max-width:400px;">
+            <h3>修改密码</h3>
+            <form method="POST" action="{{ url_for('admin_change_password') }}">
+                <div class="form-group">
+                    <label for="old_password">旧密码</label>
+                    <input type="password" id="old_password" name="old_password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new_password">新密码</label>
+                    <input type="password" id="new_password" name="new_password" required>
+                </div>
+                <button type="submit" class="btn-primary" style="max-width:100%;">修改密码</button>
+            </form>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-link" style="margin-top:32px;">返回首页</a>
+    </div>
+</div>
+{% endblock %}

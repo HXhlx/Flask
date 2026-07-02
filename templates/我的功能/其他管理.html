@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}其他管理{% endblock %}
+{% block body %}
+<div id="header">
+    <a href="{{ url_for('my') }}">
+        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
+    </a>
+    <p class="tou" style="margin-left:12px;">其他管理</p>
+</div>
+<div class="layout-wrap">
+    <div class="main-content">
+        <div style="display:grid;gap:12px;max-width:600px;">
+            <a href="{{ url_for('recommend') }}" class="manage-link">
+                <span>图书推荐</span>
+                <small>根据您的购买历史智能推荐</small>
+            </a>
+            <a href="{{ url_for('admin_login') }}" class="manage-link">
+                <span>管理员入口</span>
+                <small>查看经营统计和管理面板</small>
+            </a>
+        </div>
+    </div>
+</div>
+<nav class="bottom-nav"><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/图书1.png') }}"><span>首页</span></a><a href="{{ url_for('operator') }}"><img src="{{ url_for('static', filename='images/操作.png') }}"><span>操作</span></a><a href="{{ url_for('shopping') }}"><img src="{{ url_for('static', filename='images/购物车.png') }}"><span>购物车</span></a><a href="{{ url_for('my') }}"><img src="{{ url_for('static', filename='images/我的.png') }}"><span>我的</span></a></nav>
+{% endblock %}

@@ -1,25 +1,32 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
-</head>
-<body>
-<form action="{{ url_for('skip') }}">
-    <div class="white-box">
-        <input type="file" name="face"><br><br><br>
-        <label>
-            <input type="text" required placeholder="请输入身份证号" name="id">
-        </label><br><br><br>
-        <label>
-            <input type="text" required placeholder="请输入姓名" name="name">
-        </label><br><br><br>
-        <label>
-            <input type="text" required placeholder="请输入住址" name="address">
-        </label><br><br><br>
+{% extends "base.html" %}
+{% block title %}注册{% endblock %}
+{% block body %}
+<div class="layout-wrap">
+    <div class="main-content" style="display:flex;align-items:center;justify-content:center;min-height:80vh;">
+        <div class="page-container">
+            <h2 class="page-title">完善注册信息</h2>
+            <p class="text-muted" style="text-align:center;">手机号：{{ phone }}</p>
+            {% if error %}
+            <div class="alert alert-error">{{ error }}</div>
+            {% endif %}
+            <form method="POST" action="{{ url_for('register_page') }}">
+                <div class="form-group">
+                    <label for="id">身份证号</label>
+                    <input type="text" id="id" name="id" required
+                           placeholder="请输入身份证号" pattern="^\d{17}[\dXx]$" maxlength="18">
+                </div>
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" required placeholder="请输入姓名">
+                </div>
+                <div class="form-group">
+                    <label for="address">住址</label>
+                    <input type="text" id="address" name="address" placeholder="请输入住址">
+                </div>
+                <button type="submit" class="btn-primary">完成注册</button>
+            </form>
+            <a href="{{ url_for('login_page') }}" class="back-link">返回登录</a>
+        </div>
     </div>
-    <button class="deng-btn" type="submit">注册</button>
-</form>
-</body>
-</html>
+</div>
+{% endblock %}

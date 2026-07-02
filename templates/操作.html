@@ -1,51 +1,71 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>操作</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
-</head>
-<body>
-<div id="header" class="">
-    <div id="kuang" style="text-align: left;">
-        <img class="s-image" src="{{ url_for('static',filename='images/snow.png') }}" style="text-align: left;">
-        <p class="tou">XXXX书店</p>
-        <label>
-            <input class="sou-inp" type="text" placeholder=" 搜索">
-        </label>
+{% extends "base.html" %}
+{% block title %}操作{% endblock %}
+{% block body %}
+<div id="header">
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
+        <p class="tou">功能操作</p>
     </div>
+    <form class="search-form" action="{{ url_for('search') }}" method="GET">
+        <input class="sou-inp" type="text" name="q" placeholder="搜索...">
+    </form>
 </div>
-<div id="main" class="">
-    <div id="left" class="">
-        <div class="w-box">
-            <img class="l-image" src="{{ url_for('static',filename='images/购书.png') }}">
-            <img class="l-image" src="{{ url_for('static',filename='images/预订.png') }}">
+
+<div class="layout-wrap">
+    <div class="main-content">
+        <h2 style="margin-bottom:20px;">图书服务</h2>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+            <a href="{{ url_for('sell_page') }}" class="manage-link">
+                <span>购买图书</span>
+                <small>浏览并购买新书</small>
+            </a>
+            <form method="POST" action="{{ url_for('rent_book', isbn='9787506380263') }}" class="manage-link" style="margin:0;"
+                  onsubmit="return confirm('确认借阅此书？')">
+                <button type="submit" style="background:none;border:none;color:inherit;cursor:pointer;width:100%;text-align:left;padding:0;">
+                    <span>租赁图书</span>
+                    <small>租借二手图书</small>
+                </button>
+            </form>
+            <a href="{{ url_for('recommend') }}" class="manage-link" style="margin:0;">
+                <span>个性推荐</span>
+                <small>根据购买历史推荐</small>
+            </a>
+            <a href="{{ url_for('my_feature', feature='已购买') }}" class="manage-link" style="margin:0;">
+                <span>订单管理</span>
+                <small>查看和管理我的订单</small>
+            </a>
+        </div>
+
+        <h2 style="margin-top:32px;margin-bottom:16px;">图书分类</h2>
+        <div class="category-grid">
+            {% set categories = ['儿童读物', '文学', '青少年读物', '考试图书', '人文历史', '科学', '金融经济', '中小学教辅'] %}
+            {% for cat in categories %}
+            <a href="{{ url_for('book_category', category=cat) }}" class="category-card">
+                <img src="{{ url_for('static', filename='images/' + cat + '.png') }}" alt="{{ cat }}">
+                <span>{{ cat }}</span>
+            </a>
+            {% endfor %}
         </div>
     </div>
-    <div id="right" class="">
-    </div>
 </div>
-<div id="footer" class="bottom">
-    <div>
-        <a href="{{ url_for('home') }}">
-            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('operator') }}">
-            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('shopping') }}">
-            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('my') }}">
-            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
-        </a>
-    </div>
-</div>
-</body>
-</html>
+
+<nav class="bottom-nav" id="footer">
+    <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/图书1.png') }}" alt="首页">
+        <span>首页</span>
+    </a>
+    <a href="{{ url_for('operator') }}">
+        <img src="{{ url_for('static', filename='images/操作.png') }}" alt="操作">
+        <span>操作</span>
+    </a>
+    <a href="{{ url_for('shopping') }}">
+        <img src="{{ url_for('static', filename='images/购物车.png') }}" alt="购物车">
+        <span>购物车</span>
+    </a>
+    <a href="{{ url_for('my') }}">
+        <img src="{{ url_for('static', filename='images/我的.png') }}" alt="我的">
+        <span>我的</span>
+    </a>
+</nav>
+{% endblock %}

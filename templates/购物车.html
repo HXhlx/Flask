@@ -1,50 +1,66 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>购物车</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
-</head>
-<body>
-<div id="header" class="">
-    <div id="kuang" style="text-align: left;">
-        <img class="s-image" src="{{ url_for('static',filename='images/snow.png') }}" style="text-align: left;">
-        <p class="tou">XXXX书店</p>
-        <div style="text-align: left;">
-            <a href="">
-                <p class="guanli">管理</p>
+{% extends "base.html" %}
+{% block title %}购物车{% endblock %}
+{% block body %}
+<div id="header">
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
+        <p class="tou">购物车</p>
+    </div>
+</div>
+
+<div class="layout-wrap">
+    <div class="main-content">
+        {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+        {% endif %}
+
+        <div class="card" style="max-width:500px;">
+            <h3 style="margin-bottom:16px;">购买商品</h3>
+            <form method="POST" action="{{ url_for('shopping') }}">
+                <div class="form-group">
+                    <label for="isbn">图书 ISBN</label>
+                    <input type="text" id="isbn" name="isbn" value="9787506380263">
+                </div>
+                <div class="form-group">
+                    <label for="num">购买数量</label>
+                    <input type="number" id="num" name="num" min="1" value="1" required>
+                </div>
+                <button type="submit" class="btn-primary" style="max-width:100%;">确认购买</button>
+            </form>
+        </div>
+
+        {% if num %}
+        <div class="card" style="max-width:500px;margin-top:16px;">
+            <p style="text-align:center;font-size:18px;">
+                已成功购买 <strong>{{ num }}</strong> 本图书！
+            </p>
+            <a href="{{ url_for('my_feature', feature='已购买') }}" class="back-link" style="margin-top:12px;">
+                查看已购买 >>
             </a>
         </div>
+        {% endif %}
     </div>
 </div>
-<div id="main" class="">
-    {% if num>0 %}
-        <div>
-            <img class="b-image" src="{{ url_for('static',filename='images/推荐1.png') }}" style="position:absolute;top:9%;">
-        </div>
-    {% endif %}
-</div>
-<div id="footer" class="bottom">
-    <div>
-        <a href="{{ url_for('home') }}">
-            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('operator') }}">
-            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('shopping') }}">
-            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('my') }}">
-            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
-        </a>
-    </div>
-</div>
-</body>
-</html>
+
+<nav class="bottom-nav" id="footer">
+    <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/图书1.png') }}" alt="首页">
+        <span>首页</span>
+    </a>
+    <a href="{{ url_for('operator') }}">
+        <img src="{{ url_for('static', filename='images/操作.png') }}" alt="操作">
+        <span>操作</span>
+    </a>
+    <a href="{{ url_for('shopping') }}">
+        <img src="{{ url_for('static', filename='images/购物车.png') }}" alt="购物车">
+        <span>购物车</span>
+    </a>
+    <a href="{{ url_for('my') }}">
+        <img src="{{ url_for('static', filename='images/我的.png') }}" alt="我的">
+        <span>我的</span>
+    </a>
+</nav>
+{% endblock %}

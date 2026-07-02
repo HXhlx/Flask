@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}考试图书{% endblock %}
+{% block body %}
+<div id="header">
+    <div id="kuang">
+        <a href="{{ url_for('home') }}">
+            <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}">
+        </a>
+        <p class="tou">考试图书</p>
+    </div>
+</div>
+<div id="main">
+    <div class="book-list">
+        <p class="empty-msg">正在加载图书...</p>
+    </div>
+</div>
+<div id="footer" class="bottom">
+    <div><a href="{{ url_for('home') }}"><img class="image" src="{{ url_for('static', filename='images/图书1.png') }}"></a></div>
+    <div><a href="{{ url_for('operator') }}"><img class="image" src="{{ url_for('static', filename='images/操作.png') }}"></a></div>
+    <div><a href="{{ url_for('shopping') }}"><img class="image" src="{{ url_for('static', filename='images/购物车.png') }}"></a></div>
+    <div><a href="{{ url_for('my') }}"><img class="image" src="{{ url_for('static', filename='images/我的.png') }}"></a></div>
+</div>
+{% endblock %}

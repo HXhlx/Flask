@@ -1,15 +1,22 @@
 {% extends "base.html" %}
-{% block title %}推荐{% endblock %}
+{% block title %}搜索结果{% endblock %}
 {% block body %}
 <div id="header">
-    <a href="{{ url_for('home') }}">
-        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
-    </a>
-    <p class="tou" style="margin-left:12px;">为你推荐</p>
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
+        <p class="tou">搜索</p>
+    </div>
+    <form class="search-form" action="{{ url_for('search') }}" method="GET">
+        <input class="sou-inp" type="text" name="q" value="{{ keyword }}" placeholder="搜索书名、作者、出版社...">
+    </form>
 </div>
 
 <div class="layout-wrap">
     <div class="main-content">
+        <p class="text-muted" style="margin-bottom:16px;">
+            {% if keyword %}关键词"{{ keyword }}"的搜索结果{% else %}请输入关键词进行搜索{% endif %}
+        </p>
+
         {% if books %}
         <div class="book-list">
             {% for book in books %}
@@ -28,8 +35,10 @@
             </div>
             {% endfor %}
         </div>
+        {% elif keyword %}
+        <p class="empty-msg">未找到相关图书，请尝试其他关键词</p>
         {% else %}
-        <p class="empty-msg">暂无推荐，多购买一些图书可以获得更精准的推荐</p>
+        <p class="empty-msg">请在上方搜索框输入关键词</p>
         {% endif %}
     </div>
 </div>

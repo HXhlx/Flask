@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}分享{% endblock %}
+{% block body %}
+<div id="header">
+    <a href="{{ url_for('home') }}">
+        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
+    </a>
+    <p class="tou" style="margin-left:12px;">分享</p>
+</div>
+<div class="layout-wrap">
+    <div class="main-content" style="text-align:center;padding-top:60px;">
+        <h2>分享好书给好友</h2>
+        <p class="text-muted" style="margin-bottom:24px;">当前页面链接</p>
+        <button class="btn-primary" onclick="navigator.clipboard.writeText(location.href);this.textContent='已复制';">复制链接</button>
+    </div>
+</div>
+{% endblock %}

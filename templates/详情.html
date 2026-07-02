@@ -1,64 +1,55 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>详情</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
-</head>
-<body>
-<div id="header" class="">
-    <div id="kuang" style="text-align: left">
-        <div>
-            <a href="{{ url_for('operator') }}">
-                <img class="s-image" src="{{ url_for('static',filename='images/返回.png') }}" style="text-align: left">
-            </a>
+{% extends "base.html" %}
+{% block title %}详情{% endblock %}
+{% block body %}
+<div id="header">
+    <a href="{{ url_for('home') }}">
+        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
+    </a>
+    <p class="tou" style="margin-left:12px;">图书详情</p>
+    <form class="search-form" action="{{ url_for('search') }}" method="GET">
+        <input class="sou-inp" type="text" name="q" placeholder="搜索...">
+    </form>
+</div>
+
+<div class="layout-wrap">
+    <div class="main-content">
+        <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div>
+                <img class="xq-image" src="{{ url_for('static', filename='images/详情.png') }}" alt="图书封面" style="border-radius:8px;width:100%;">
+            </div>
+            <div>
+                <h2 style="margin-bottom:8px;">人间失格</h2>
+                <p style="opacity:0.7;margin-bottom:16px;">作者：太宰治 | 出版社：作家出版社</p>
+                <p style="font-size:28px;font-weight:bold;color:var(--gold);margin-bottom:20px;">&yen;25.00</p>
+                <p style="opacity:0.8;margin-bottom:24px;">
+                    太宰治的代表作之一，以第一人称视角讲述主人公大庭叶藏的堕落人生。
+                    作品深刻探讨了人性、孤独与社会异化等主题。
+                </p>
+                <form method="POST" action="{{ url_for('shopping') }}">
+                    <input type="hidden" name="isbn" value="9787506380263">
+                    <div class="form-group">
+                        <label>购买数量</label>
+                        <input type="number" name="num" value="1" min="1" max="99" style="max-width:120px;">
+                    </div>
+                    <div class="action-btns" style="justify-content:flex-start;margin-top:16px;">
+                        <button class="jia-btn" type="button" onclick="history.back()">返回</button>
+                        <button class="gou-btn" type="submit">加入购物车</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <label>
-        <input class="s-inp" type="text" placeholder=" 搜索">
-    </label>
-    <div id="kuang">
-        <div>
-            <a href="{{ url_for('my') }}">
-                <img class="s-image" src="{{ url_for('static',filename='images/点点点.png') }}" style="text-align: right">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('shopping') }}">
-                <img class="s-image" src="{{ url_for('static',filename='images/小购物车.png') }}" style="text-align: right">
-            </a>
-        </div>
-        <div>
-            <a href="{{ url_for('share') }}">
-                <img class="s-image" src="{{ url_for('static',filename='images/分享.png') }}" style="text-align: right">
-            </a>
+
+        <h2 style="margin-top:32px;margin-bottom:16px;">相关推荐</h2>
+        <div class="book-list">
+            <div class="book-item">
+                <p class="book-name">窗边的小豆豆</p>
+                <p class="book-info">黑柳彻子 | 南海出版公司 | &yen;39.50</p>
+            </div>
+            <div class="book-item">
+                <p class="book-name">百年孤独</p>
+                <p class="book-info">加西亚·马尔克斯 | 南海出版公司 | &yen;55.00</p>
+            </div>
         </div>
     </div>
 </div>
-<div id="main" class="">
-    <img class="xq-image" src="{{ url_for('static',filename='images/详情.png') }}">
-</div>
-<div id="hfoot" class="">
-    <div id="kuang" style="text-align: left">
-        <img class="s-image" src="{{ url_for('static',filename='images/客服.png') }}" style="text-align: left">
-        <img class="s-image" src="{{ url_for('static',filename='images/收藏.png') }}" style="text-align: left">
-    </div>
-    <div style="text-align: right">
-        <table style="width: 120px;border: 0">
-            <tr>
-                <td>
-                    <form action="{{ url_for('sell') }}">
-                        <button class="jia-btn" type="submit">加入购物车</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="{{ url_for('sell') }}">
-                        <button class="gou-btn" type="submit">立即购买</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-</body>
-</html>
+{% endblock %}

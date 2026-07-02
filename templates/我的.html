@@ -1,76 +1,88 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的</title>
-    <link type="text/css" rel="stylesheet" href='{{ url_for('static',filename='ss.css') }}'>
-</head>
-<body>
-<div id="head" class="">
-    <div id="kuang" style="text-align: left;">
-        <img class="t-image" src="{{ url_for('static', filename='photo/管理员.jpg') }}" style="text-align: left;">
-        <div>
-            <p style="font-family: 幼圆,sans-serif;font-size: 24px;text-align: left"> 用户昵称</p>
-            <p style="font-family: 幼圆,sans-serif;font-size: 12px;text-align: left"> ID: 110002</p>
-        </div>
+{% extends "base.html" %}
+{% block title %}我的{% endblock %}
+{% block body %}
+<div id="header">
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
+        <p class="tou">我的</p>
     </div>
-</div>
-<div id="mid" class="">
-    <div class="">
-        <img class="b-image" src="{{ url_for('static',filename='images/白板.png') }}">
-    </div>
-    <div class="tubiao">
-        <div><a href="{{ url_for('my_feature', feature='已完成') }}">
-            <img class="m-image" src="{{ url_for('static',filename='images/已完成.png') }}" style="position:absolute;left:10%;top:18%;z-index:2;">
-        </a></div>
-        <div><a href="{{ url_for('my_feature', feature='已借阅') }}">
-            <img class="m-image" src="{{ url_for('static',filename='images/已借阅.png') }}" style="position:absolute;left:33%;top:18%;z-index:2;">
-        </a></div>
-        <div><a href="{{ url_for('my_feature', feature='已取消') }}">
-            <img class="m-image" src="{{ url_for('static',filename='images/已取消.png') }}" style="position:absolute;left:56%;top:18%;z-index:2;">
-        </a></div>
-        <div><a href="{{ url_for('my_feature', feature='已购买') }}">
-            <img class="m-image" src="{{ url_for('static',filename='images/已购买.png') }}" style="position:absolute;left:10%;top:36%;z-index:2;">
-        </a></div>
-        <div><a href="{{ url_for('my_feature', feature='待收货') }}">
-            <img class="m-image" src="{{ url_for('static',filename='images/待收货.png') }}" style="position:absolute;left:33%;top:36%;z-index:2;">
-        </a></div>
-        <div><a href="{{ url_for('my_feature', feature='已预订') }}">
-            <img class="m-image" src="{{ url_for('static',filename='images/已预订.png') }}" style="position:absolute;left:56%;top:36%;z-index:2;">
-        </a></div>
-    </div>
-    <form action="{{ url_for('my_feature', feature='其他管理') }}">
-        <div style="position: absolute;left: 13%;top: 220px;text-align: center">
-            <button class="qt-btn" type="submit">其他管理</button>
-        </div>
-    </form>
-    <form action="{{ url_for('my_feature', feature='成员管理') }}">
-        <div style="position: absolute;left: 13%;top: 260px;text-align: center">
-            <button class="qt-btn" type="submit">成员管理</button>
-        </div>
+    <form class="search-form" action="{{ url_for('search') }}" method="GET">
+        <input class="sou-inp" type="text" name="q" placeholder="搜索...">
     </form>
 </div>
-<div id="footer" class="bottom">
-    <div>
-        <a href="{{ url_for('home') }}">
-            <img class="image" src="{{ url_for('static',filename='images/图书1.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('operator') }}">
-            <img class="image" src="{{ url_for('static',filename='images/操作.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('shopping') }}">
-            <img class="image" src="{{ url_for('static',filename='images/购物车.png') }}">
-        </a>
-    </div>
-    <div>
-        <a href="{{ url_for('my') }}">
-            <img class="image" src="{{ url_for('static',filename='images/我的.png') }}">
-        </a>
+
+<div class="layout-wrap">
+    <div class="main-content">
+        <div class="profile-header">
+            <img class="t-image" src="{{ url_for('static', filename='photo/管理员.jpg') }}" alt="头像">
+            <div>
+                <p class="user-name">{{ member.name if member else '未登录' }}</p>
+                <p class="user-id">ID: {{ member.member_id if member else '--' }}
+                    {% if member and member.score %} | 积分: {{ member.score }}{% endif %}
+                </p>
+            </div>
+        </div>
+
+        <h2>我的功能</h2>
+        <div class="feature-grid">
+            <a href="{{ url_for('my_feature', feature='已购买') }}">
+                <img src="{{ url_for('static', filename='images/已购买.png') }}" alt="已购买">
+                <span>已购买</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='已借阅') }}">
+                <img src="{{ url_for('static', filename='images/已借阅.png') }}" alt="已借阅">
+                <span>已借阅</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='已预订') }}">
+                <img src="{{ url_for('static', filename='images/已预订.png') }}" alt="已预订">
+                <span>已预订</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='待收货') }}">
+                <img src="{{ url_for('static', filename='images/待收货.png') }}" alt="待收货">
+                <span>待收货</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='已完成') }}">
+                <img src="{{ url_for('static', filename='images/已完成.png') }}" alt="已完成">
+                <span>已完成</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='已取消') }}">
+                <img src="{{ url_for('static', filename='images/已取消.png') }}" alt="已取消">
+                <span>已取消</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='其他管理') }}">
+                <img src="{{ url_for('static', filename='images/图书1.png') }}" alt="其他管理">
+                <span>其他管理</span>
+            </a>
+            <a href="{{ url_for('my_feature', feature='成员管理') }}">
+                <img src="{{ url_for('static', filename='images/点点点.png') }}" alt="成员管理">
+                <span>成员管理</span>
+            </a>
+        </div>
+
+        {% if member %}
+        <form method="POST" action="{{ url_for('logout') }}" class="logout-form">
+            <button class="btn-outline" type="submit">退出登录</button>
+        </form>
+        {% endif %}
     </div>
 </div>
-</body>
-</html>
+
+<nav class="bottom-nav" id="footer">
+    <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/图书1.png') }}" alt="首页">
+        <span>首页</span>
+    </a>
+    <a href="{{ url_for('operator') }}">
+        <img src="{{ url_for('static', filename='images/操作.png') }}" alt="操作">
+        <span>操作</span>
+    </a>
+    <a href="{{ url_for('shopping') }}">
+        <img src="{{ url_for('static', filename='images/购物车.png') }}" alt="购物车">
+        <span>购物车</span>
+    </a>
+    <a href="{{ url_for('my') }}">
+        <img src="{{ url_for('static', filename='images/我的.png') }}" alt="我的">
+        <span>我的</span>
+    </a>
+</nav>
+{% endblock %}

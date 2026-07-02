@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}已预订{% endblock %}
+{% block body %}
+<div id="header">
+    <a href="{{ url_for('my') }}">
+        <img class="s-image" src="{{ url_for('static', filename='images/返回.png') }}" alt="返回">
+    </a>
+    <p class="tou" style="margin-left:12px;">已预订</p>
+</div>
+<div class="layout-wrap">
+    <div class="main-content">
+        {% if data %}
+        <div class="order-list">
+            {% for order in data %}
+            <div class="order-item">
+                <div class="order-header">
+                    <span>{{ order[0] }}</span>
+                    <span>{{ order[1] }}</span>
+                </div>
+                <p class="order-body">{{ order[2] }} x{{ order[3] }}</p>
+                <div class="order-footer">
+                    <span class="price">&yen;{{ order[4] }}</span>
+                    <form method="POST" action="{{ url_for('unsubscribe', order_no=order[0]) }}" style="display:inline"
+                          onsubmit="return confirm('确认取消预订？')">
+                        <button type="submit" class="btn-danger btn-sm">取消预订</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-msg">暂无预订记录</p>
+        {% endif %}
+    </div>
+</div>
+<nav class="bottom-nav"><a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/图书1.png') }}"><span>首页</span></a><a href="{{ url_for('operator') }}"><img src="{{ url_for('static', filename='images/操作.png') }}"><span>操作</span></a><a href="{{ url_for('shopping') }}"><img src="{{ url_for('static', filename='images/购物车.png') }}"><span>购物车</span></a><a href="{{ url_for('my') }}"><img src="{{ url_for('static', filename='images/我的.png') }}"><span>我的</span></a></nav>
+{% endblock %}
