@@ -907,8 +907,8 @@ class FlaskAppTest(unittest.TestCase):
             'isbn': '9787108063106',
             'num': '1'
         })
-        self.assertEqual(resp.status_code, 200)
-        self.assertIn('购买成功'.encode('utf-8'), resp.data)
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn('/confirm_payment', resp.headers['Location'])
 
     def test_shopping_post_bad_num(self):
         self.client.post('/login', data={'phone': '15861165153'})
@@ -927,6 +927,75 @@ class FlaskAppTest(unittest.TestCase):
         })
         self.assertEqual(resp.status_code, 200)
         self.assertIn('数量必须大于0'.encode('utf-8'), resp.data)
+
+    def test_shopping_post_book_not_found(self):
+        self.client.post('/login', data={'phone': '15861165153'})
+        resp = self.client.post('/shopping', data={
+            'isbn': '0000000000000',
+            'num': '1'
+        })
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('图书不存在'.encode('utf-8'), resp.data)
+
+    def test_shopping_post_stock_insufficient(self):
+        self.client.post('/login', data={'phone': '15861165153'})
+        resp = self.client.post('/shopping', data={
+            'isbn': '9787506380263',
+            'num': '99999'
+        })
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('库存不足'.encode('utf-8'), resp.data)
+
+    def test_confirm_payment_without_pending_redirects(self):
+        self.client.post('/login', data={'phone': '15861165153'})
+        resp = self.client.get('/confirm_payment')
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn('/shopping', resp.headers['Location'])
+
+    def test_confirm_payment_requires_login(self):
+        resp = self.client.get('/confirm_payment')
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn('/login', resp.headers['Location'])
+
+    def test_confirm_payment_get_renders(self):
+        self.client.post('/login', data={'phone': '15861165153'})
+        with self.client.session_transaction() as sess:
+            sess['pending_purchase'] = {
+                'isbn': '9787506380263',
+                'num': 1,
+                'name': '人间失格',
+                'author': '太宰治',
+                'press': '作家出版社',
+                'price': 25.0,
+                'total': 25.0,
+            }
+        resp = self.client.get('/confirm_payment')
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('人间失格'.encode('utf-8'), resp.data)
+        self.assertIn('25.00'.encode('utf-8'), resp.data)
+
+    def test_confirm_payment_post_pay(self):
+        self.client.post('/login', data={'phone': '15861165153'})
+        self.client.post('/shopping', data={
+            'isbn': '9787108063106',
+            'num': '1'
+        })
+        resp = self.client.post('/confirm_payment', data={'action': 'pay'})
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('支付成功'.encode('utf-8'), resp.data)
+        self.assertIn('订单号'.encode('utf-8'), resp.data)
+
+    def test_confirm_payment_post_cancel(self):
+        self.client.post('/login', data={'phone': '15861165153'})
+        self.client.post('/shopping', data={
+            'isbn': '9787108063106',
+            'num': '1'
+        })
+        resp = self.client.post('/confirm_payment', data={'action': 'cancel'})
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn('/shopping', resp.headers['Location'])
+        with self.client.session_transaction() as sess:
+            self.assertIsNone(sess.get('pending_purchase'))
 
     def test_404_handler(self):
         resp = self.client.get('/nonexistent/page')

@@ -134,11 +134,48 @@ def shopping():
         if num <= 0:
             return render_template('购物车.html', error='数量必须大于0')
         with BookstoreService() as svc:
-            result = svc.sell(session['member_id'], isbn, num)
-            if result is True or (isinstance(result, str) and result.startswith('B')):
-                return render_template('购物车.html', num=num, success='购买成功')
-            return render_template('购物车.html', error=str(result))
+            book = svc.get_newbook(isbn)
+            if not book:
+                return render_template('购物车.html', error='图书不存在')
+            if book.stock < num:
+                return render_template('购物车.html', error='库存不足')
+        session['pending_purchase'] = {
+            'isbn': isbn,
+            'num': num,
+            'name': book.name,
+            'author': book.author,
+            'press': book.press,
+            'price': float(book.price),
+            'total': float(book.price * num),
+        }
+        return redirect(url_for('confirm_payment'))
     return render_template('购物车.html')
+
+
+@app.route('/confirm_payment', methods=['GET', 'POST'])
+@login_required
+def confirm_payment():
+    pending = session.get('pending_purchase')
+    if not pending:
+        return redirect(url_for('shopping'))
+    if request.method == 'POST':
+        action = request.form.get('action')
+        if action == 'cancel':
+            session.pop('pending_purchase', None)
+            return redirect(url_for('shopping'))
+        with BookstoreService() as svc:
+            result = svc.sell(
+                session['member_id'], pending['isbn'], pending['num']
+            )
+            session.pop('pending_purchase', None)
+            if isinstance(result, str) and result.startswith('B'):
+                return render_template(
+                    '购物车.html',
+                    num=pending['num'],
+                    success='支付成功，订单号：' + result
+                )
+            return render_template('购物车.html', error=str(result))
+    return render_template('确认支付.html', order=pending)
 
 
 @app.route('/sell')

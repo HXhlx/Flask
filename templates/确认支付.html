@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}确认订单{% endblock %}
+{% block body %}
+<div id="header">
+    <div id="kuang">
+        <img class="s-image" src="{{ url_for('static', filename='images/snow.png') }}" alt="logo">
+        <p class="tou">确认订单</p>
+    </div>
+</div>
+
+<div class="layout-wrap">
+    <div class="main-content">
+        <div class="card" style="max-width:600px;">
+            <h2 style="margin-bottom:20px;">订单信息</h2>
+
+            <div style="border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:16px;margin-bottom:16px;">
+                <p class="book-name" style="font-size:18px;">{{ order.name }}</p>
+                <p class="book-info" style="margin-top:8px;">
+                    {{ order.author }} | {{ order.press }}
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label>单价</label>
+                <p style="font-size:16px;">&yen;{{ "%.2f"|format(order.price) }}</p>
+            </div>
+            <div class="form-group">
+                <label>数量</label>
+                <p style="font-size:16px;">{{ order.num }}</p>
+            </div>
+            <div class="form-group">
+                <label>订单总额</label>
+                <p style="font-size:24px;font-weight:bold;color:var(--gold);">&yen;{{ "%.2f"|format(order.total) }}</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('confirm_payment') }}" style="margin-top:24px;">
+                <div class="action-btns" style="gap:12px;justify-content:flex-end;">
+                    <button type="submit" name="action" value="cancel" class="jia-btn"
+                            onclick="return confirm('确认取消订单？')">取消</button>
+                    <button type="submit" name="action" value="pay" class="gou-btn"
+                            style="width:120px;">确认支付</button>
+                </div>
+            </form>
+        </div>
+
+        <p class="text-muted" style="text-align:center;margin-top:24px;font-size:12px;">
+            请核对订单信息，确认无误后点击"确认支付"完成交易
+        </p>
+    </div>
+</div>
+{% endblock %}

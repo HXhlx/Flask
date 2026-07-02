@@ -28,6 +28,13 @@ class BookstoreService(Database):
         self.cursor.execute("SELECT * FROM members WHERE MNo = %s", (member_id,))
         return self.cursor.fetchone()
 
+    def get_newbook(self, isbn):
+        self.cursor.execute("SELECT * FROM newbook WHERE BNo = %s", (isbn,))
+        row = self.cursor.fetchone()
+        if row:
+            return NewBook(row)
+        return None
+
     def _next_buy_id(self):
         return _make_id('B')
 
